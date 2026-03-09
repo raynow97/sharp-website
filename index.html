@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sharp — The speed reading app built for Indian students. Read faster, retain more. Trusted by JEE, NEET, UPSC, and CA aspirants.">
+<title>Sharp — Read Smarter. Score Higher.</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf7f2;
+    --warm-white: #fff9f4;
+    --ink: #1a1208;
+    --ink-light: #3d3020;
+    --ink-muted: #8a7a65;
+    --ink-faint: #c5b8a8;
+    --accent: #2d6a4f;
+    --accent-light: #e8f5ee;
+    --accent-warm: #d4a017;
+    --accent-warm-light: #fef8e8;
+    --border: #e8e0d5;
+    --border-dark: #c8bead;
+    --font-serif: 'Fraunces', serif;
+    --font-sans: 'DM Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(250,247,242,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.03em;
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    color: var(--ink-muted);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+    letter-spacing: 0.01em;
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  .nav-cta {
+    background: var(--ink);
+    color: var(--cream) !important;
+    padding: 9px 20px;
+    border-radius: 8px;
+    font-size: 13px !important;
+    transition: background 0.2s, transform 0.1s !important;
+  }
+  .nav-cta:hover { background: var(--ink-light) !important; transform: translateY(-1px); }
+
+  .nav-mobile-cta {
+    display: none;
+    background: var(--ink);
+    color: var(--cream);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-mobile-cta { display: block; }
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 100px 5%; }
+
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* ── HERO ── */
+  #hero {
+    padding-top: 140px;
+    padding-bottom: 80px;
+    background: var(--warm-white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* subtle grain texture */
+  #hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 12px;
+    font-family: var(--font-mono);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(45,106,79,0.2);
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(36px, 4.5vw, 58px);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+    margin-bottom: 36px;
+    max-width: 460px;
+    font-weight: 400;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--ink);
+    color: var(--cream);
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 4px 16px rgba(26,18,8,0.2);
+  }
+  .btn-download:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,18,8,0.25); }
+
+  .btn-trial {
+    font-size: 13px;
+    color: var(--ink-muted);
+    font-weight: 500;
+  }
+
+  .hero-trust {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+
+  .trust-avatars {
+    display: flex;
+  }
+  .trust-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    margin-left: -8px;
+  }
+  .trust-avatar:first-child { margin-left: 0; }
+
+  .trust-text { font-size: 13px; color: var(--ink-muted); }
+  .trust-text strong { color: var(--ink); }
+
+  /* phone mockup */
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .phone-frame {
+    width: 240px;
+    height: 480px;
+    background: var(--ink);
+    border-radius: 36px;
+    padding: 12px;
+    box-shadow: 0 40px 80px rgba(26,18,8,0.25), 0 0 0 1px rgba(255,255,255,0.08);
+    position: relative;
+    z-index: 2;
+  }
+
+  .phone-screen {
+    width: 100%;
+    height: 100%;
+    background: #080808;
+    border-radius: 26px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+  }
+
+  .phone-notch {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 20px;
+    background: var(--ink);
+    border-radius: 0 0 14px 14px;
+    z-index: 3;
+  }
+
+  .phone-book-label {
+    font-family: var(--font-mono);
+    font-size: 7px;
+    color: #3a3a3a;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    align-self: flex-start;
+  }
+
+  .phone-chapter-label {
+    font-size: 9px;
+    color: #666;
+    margin-bottom: 28px;
+    align-self: flex-start;
+    font-family: var(--font-sans);
+  }
+
+  .phone-word {
+    font-family: var(--font-serif);
+    font-size: 34px;
+    font-weight: 600;
+    color: #efefef;
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+  }
+
+  .phone-word .pivot { color: #c8ff57; }
+
+  .phone-progress {
+    width: 100%;
+    height: 2px;
+    background: #1e1e1e;
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+  .phone-progress-fill {
+    width: 34%;
+    height: 100%;
+    background: #c8ff57;
+    border-radius: 2px;
+  }
+
+  .phone-controls {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .phone-preset {
+    flex: 1;
+    padding: 5px 0;
+    background: transparent;
+    border: 1px solid #222;
+    border-radius: 5px;
+    color: #555;
+    font-family: var(--font-mono);
+    font-size: 8px;
+    text-align: center;
+  }
+  .phone-preset.on { border-color: #c8ff57; color: #c8ff57; background: rgba(200,255,87,0.08); }
+
+  /* floating cards */
+  .float-card {
+    position: absolute;
+    background: white;
+    border-radius: 12px;
+    padding: 12px 16px;
+    box-shadow: 0 8px 32px rgba(26,18,8,0.12);
+    font-size: 12px;
+    border: 1px solid var(--border);
+    z-index: 3;
+  }
+
+  .float-card-1 {
+    right: -20px;
+    top: 80px;
+    width: 140px;
+  }
+
+  .float-card-2 {
+    left: -20px;
+    bottom: 100px;
+    width: 150px;
+  }
+
+  .card-label { font-family: var(--font-mono); font-size: 9px; color: var(--ink-faint); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+  .card-value { font-family: var(--font-serif); font-size: 20px; font-weight: 700; color: var(--ink); }
+  .card-sub { font-size: 10px; color: var(--ink-muted); margin-top: 2px; }
+
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+    .hero-visual { display: none; }
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    background: var(--cream);
+    border-top: 1px solid var(--border);
+  }
+
+  .section-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  h2 em { font-style: italic; color: var(--accent); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-top: 60px;
+  }
+
+  .about-text p {
+    font-size: 16px;
+    color: var(--ink-muted);
+    line-height: 1.75;
+    margin-bottom: 20px;
+  }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .stat-cell {
+    background: var(--warm-white);
+    padding: 28px 24px;
+  }
+
+  .stat-num {
+    font-family: var(--font-serif);
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+
+  .stat-num span { color: var(--accent); }
+  .stat-label { font-size: 13px; color: var(--ink-muted); margin-top: 6px; line-height: 1.4; }
+
+  @media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  /* ── WHO IT'S FOR ── */
+  #for {
+    background: var(--ink);
+    color: var(--cream);
+    border-top: none;
+  }
+
+  #for .section-eyebrow { color: #c8ff57; }
+  #for h2 { color: var(--cream); }
+  #for h2 em { color: #c8ff57; }
+
+  .for-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 48px;
+  }
+
+  .for-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 28px 24px;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    cursor: default;
+  }
+  .for-card:hover { background: rgba(200,255,87,0.06); border-color: rgba(200,255,87,0.2); transform: translateY(-3px); }
+
+  .for-icon { font-size: 28px; margin-bottom: 14px; }
+  .for-title { font-family: var(--font-serif); font-size: 18px; font-weight: 600; color: var(--cream); margin-bottom: 8px; }
+  .for-desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.6; }
+
+  /* ── PRICING ── */
+  #pricing {
+    background: var(--warm-white);
+    border-top: 1px solid var(--border);
+  }
+
+  .pricing-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 56px;
+  }
+
+  .pricing-card {
+    background: var(--cream);
+    border: 2px solid var(--border-dark);
+    border-radius: 24px;
+    padding: 48px;
+    width: 100%;
+    max-width: 480px;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(26,18,8,0.08);
+  }
+
+  .pricing-badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 18px;
+    border-radius: 100px;
+    white-space: nowrap;
+    font-family: var(--font-mono);
+    letter-spacing: 0.05em;
+  }
+
+  .pricing-plan { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 16px; }
+
+  .pricing-amount {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+
+  .pricing-currency { font-family: var(--font-serif); font-size: 28px; color: var(--ink); font-weight: 600; }
+  .pricing-number { font-family: var(--font-serif); font-size: 72px; font-weight: 700; color: var(--ink); letter-spacing: -0.05em; line-height: 1; }
+  .pricing-period { font-size: 16px; color: var(--ink-muted); }
+
+  .pricing-trial { font-size: 14px; color: var(--accent); font-weight: 600; margin-bottom: 32px; }
+
+  .pricing-features { list-style: none; margin-bottom: 36px; display: flex; flex-direction: column; gap: 12px; }
+
+  .pricing-features li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    color: var(--ink-light);
+  }
+
+  .pricing-features li::before {
+    content: '';
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    border: 1.5px solid var(--accent);
+    flex-shrink: 0;
+    display: flex;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 18 18' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 9l3.5 3.5L14 6' stroke='%232d6a4f' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-size: cover;
+  }
+
+  .btn-full {
+    display: block;
+    width: 100%;
+    background: var(--ink);
+    color: var(--cream);
+    text-align: center;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 4px 16px rgba(26,18,8,0.2);
+  }
+  .btn-full:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,18,8,0.25); }
+
+  .pricing-note { text-align: center; font-size: 12px; color: var(--ink-faint); margin-top: 16px; }
+
+  /* ── FAQ ── */
+  #faq {
+    background: var(--cream);
+    border-top: 1px solid var(--border);
+  }
+
+  .faq-list { margin-top: 48px; max-width: 700px; }
+
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    padding: 24px 0;
+  }
+
+  .faq-q {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    letter-spacing: -0.01em;
+    user-select: none;
+  }
+
+  .faq-q::after {
+    content: '+';
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--ink-muted);
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+
+  .faq-item.open .faq-q::after { transform: rotate(45deg); }
+
+  .faq-a {
+    font-size: 15px;
+    color: var(--ink-muted);
+    line-height: 1.7;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s;
+  }
+
+  .faq-item.open .faq-a { max-height: 300px; padding-top: 14px; }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--accent);
+    color: white;
+    text-align: center;
+    padding: 80px 5%;
+  }
+
+  #contact h2 { color: white; }
+  #contact h2 em { color: #c8ff57; font-style: italic; }
+
+  .contact-sub { font-size: 17px; color: rgba(255,255,255,0.7); margin: 16px 0 32px; }
+
+  .contact-email {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 100px;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    backdrop-filter: blur(4px);
+    transition: background 0.2s;
+  }
+  .contact-email:hover { background: rgba(255,255,255,0.22); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.4);
+    padding: 40px 5%;
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-logo {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+  }
+
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 13px; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: rgba(255,255,255,0.7); }
+
+  .footer-social { display: flex; gap: 16px; }
+  .social-link {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: all 0.2s;
+    font-size: 14px;
+  }
+  .social-link:hover { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.8); }
+
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.2); width: 100%; text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06); margin-top: 8px; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up {
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards;
+  }
+
+  .fade-up-1 { animation-delay: 0.1s; }
+  .fade-up-2 { animation-delay: 0.2s; }
+  .fade-up-3 { animation-delay: 0.35s; }
+  .fade-up-4 { animation-delay: 0.5s; }
+
+  /* word flash demo in hero */
+  @keyframes wordCycle {
+    0%, 18% { opacity: 1; }
+    20%, 100% { opacity: 0; }
+  }
+
+  .word-cycle {
+    position: relative;
+    display: inline-block;
+  }
+
+  .word-cycle-item {
+    position: absolute;
+    left: 0; right: 0;
+    opacity: 0;
+  }
+
+  .wc1 { animation: wordCycle 4s infinite 0s; }
+  .wc2 { animation: wordCycle 4s infinite 1s; }
+  .wc3 { animation: wordCycle 4s infinite 2s; }
+  .wc4 { animation: wordCycle 4s infinite 3s; }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#" class="nav-logo">Sharp<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#for">Who it's for</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#" class="nav-cta">Download App</a></li>
+  </ul>
+  <a href="#" class="nav-mobile-cta">Download</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow fade-up fade-up-1">Now available on Android</div>
+        <h1 class="fade-up fade-up-2">Your child reads.<br><em>Sharp</em> makes it stick.</h1>
+        <p class="hero-sub fade-up fade-up-3">Sharp uses scientifically-backed speed reading technology to help students cover more in less time — without losing comprehension. Built specifically for Indian competitive exam preparation.</p>
+        <div class="hero-actions fade-up fade-up-4">
+          <a href="#" class="btn-download">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M8 12l4 4 4-4"/><path d="M12 8v8"/></svg>
+            Download on Play Store
+          </a>
+          <span class="btn-trial">7-day free trial · No card needed</span>
+        </div>
+        <div class="hero-trust fade-up fade-up-4">
+          <div class="trust-avatars">
+            <div class="trust-avatar" style="background:#e8f5ee">🧑‍🎓</div>
+            <div class="trust-avatar" style="background:#fef8e8">👩‍🎓</div>
+            <div class="trust-avatar" style="background:#e8eef5">🧑‍💻</div>
+          </div>
+          <div class="trust-text">Designed for <strong>JEE, NEET, UPSC & CA</strong> aspirants</div>
+        </div>
+      </div>
+
+      <!-- Phone Mockup -->
+      <div class="hero-visual fade-up fade-up-3">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="phone-notch"></div>
+            <div class="phone-book-label">NCERT Physics · Part I</div>
+            <div class="phone-chapter-label">Chapter 2 · Units and Measurement</div>
+            <div class="phone-word">
+              <span style="color:#3a3a3a">me</span><span class="pivot">a</span><span>surement</span>
+            </div>
+            <div class="phone-progress"><div class="phone-progress-fill"></div></div>
+            <div class="phone-controls">
+              <div class="phone-preset">150</div>
+              <div class="phone-preset on">250</div>
+              <div class="phone-preset">350</div>
+              <div class="phone-preset">500</div>
+            </div>
+          </div>
+        </div>
+        <div class="float-card float-card-1">
+          <div class="card-label">Reading speed</div>
+          <div class="card-value">2.8<span style="font-size:14px;color:#8a7a65">×</span></div>
+          <div class="card-sub">faster than average</div>
+        </div>
+        <div class="float-card float-card-2">
+          <div class="card-label">NCERT coverage</div>
+          <div class="card-value" style="font-size:16px;color:#2d6a4f">100+ books</div>
+          <div class="card-sub">all subjects included</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="container">
+    <div class="section-eyebrow">How it works</div>
+    <h2>Reading reinvented for<br><em>the way students actually learn</em></h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Most students read at 80–120 words per minute. Their brain can process up to 400. That gap is wasted potential.</p>
+        <p>Sharp uses RSVP — Rapid Serial Visual Presentation — to flash one word at a time, eliminating the unconscious habit of re-reading. The result: students cover the same chapter in a third of the time, with better focus and retention.</p>
+        <p>It's not a gimmick. It's how your eyes were always meant to read — without the inefficiency of constant back-and-forth movement across a page.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-cell">
+          <div class="stat-num">3<span>×</span></div>
+          <div class="stat-label">faster reading speed within 2 weeks of practice</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num">100<span>+</span></div>
+          <div class="stat-label">books pre-loaded, organized by exam and subject</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num">0</div>
+          <div class="stat-label">distractions — no social features, no notifications</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num">₹8<span>/</span></div>
+          <div class="stat-label">per day — less than a chai for serious exam prep</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHO IT'S FOR ── -->
+<section id="for">
+  <div class="container">
+    <div class="section-eyebrow">Who it's for</div>
+    <h2>Built for every <em>serious student</em></h2>
+    <div class="for-grid">
+      <div class="for-card">
+        <div class="for-icon">⚗️</div>
+        <div class="for-title">JEE Aspirants</div>
+        <div class="for-desc">Full NCERT Physics, Chemistry and Mathematics. Chapter-by-chapter, tracked automatically.</div>
+      </div>
+      <div class="for-card">
+        <div class="for-icon">🔬</div>
+        <div class="for-title">NEET Aspirants</div>
+        <div class="for-desc">Biology, Physics and Chemistry NCERT — the exact books that NEET questions are drawn from.</div>
+      </div>
+      <div class="for-card">
+        <div class="for-icon">🏛️</div>
+        <div class="for-title">UPSC Aspirants</div>
+        <div class="for-desc">History, Geography, Polity, Economy and more. Cover the entire GS syllabus methodically.</div>
+      </div>
+      <div class="for-card">
+        <div class="for-icon">📊</div>
+        <div class="for-title">CA Students</div>
+        <div class="for-desc">ICAI study material pre-loaded. Dense content becomes manageable at speed.</div>
+      </div>
+      <div class="for-card">
+        <div class="for-icon">📚</div>
+        <div class="for-title">School Students</div>
+        <div class="for-desc">Class 6 through 12 across all subjects. Great for revision before exams.</div>
+      </div>
+      <div class="for-card">
+        <div class="for-icon">📖</div>
+        <div class="for-title">General Readers</div>
+        <div class="for-desc">Fiction, non-fiction, classics. If you want to read more books, Sharp gets you there.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ── -->
+<section id="pricing">
+  <div class="container">
+    <div class="section-eyebrow">Simple pricing</div>
+    <h2>One plan. <em>Everything included.</em></h2>
+    <div class="pricing-wrap">
+      <div class="pricing-card">
+        <div class="pricing-badge">Most popular</div>
+        <div class="pricing-plan">Annual Plan</div>
+        <div class="pricing-amount">
+          <div class="pricing-currency">₹</div>
+          <div class="pricing-number">2,999</div>
+          <div class="pricing-period">/ year</div>
+        </div>
+        <div class="pricing-trial">✦ Start with a free 7-day trial</div>
+        <ul class="pricing-features">
+          <li>100+ books across all exam categories</li>
+          <li>Unlimited reading time, no daily caps</li>
+          <li>Chapter-level progress tracking</li>
+          <li>Adjustable reading speed (150–500 WPM)</li>
+          <li>Progress saved automatically</li>
+          <li>All future books included at no extra cost</li>
+        </ul>
+        <a href="#" class="btn-full">Start Free Trial → Download App</a>
+        <div class="pricing-note">No credit card required for trial · Cancel anytime</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section id="faq">
+  <div class="container">
+    <div class="section-eyebrow">Questions</div>
+    <h2>Things parents <em>usually ask</em></h2>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-q">Is this just another screen addiction for my child?</div>
+        <div class="faq-a">Sharp is intentionally designed to be the opposite. There are no social features, no notifications, no infinite scroll, no rewards that keep pulling students back in. The app opens, students read their chapter, and they close it. That's it. The goal is to spend less time on the phone, not more.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Does speed reading actually help with retention?</div>
+        <div class="faq-a">RSVP technology specifically reduces subvocalization — the habit of mentally "saying" words as you read — which is the main bottleneck for most readers. Studies show that controlled speed reading, particularly for revision of already-familiar material, maintains comprehension while significantly increasing speed. Sharp is best used for revision, not first-time learning of complex concepts.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Which books are available? Are they the right ones for my child's exam?</div>
+        <div class="faq-a">Sharp includes all NCERT textbooks from Class 6 through 12, which are the primary source material for JEE and NEET. For UPSC, standard static GS texts are included. For CA, ICAI study material is pre-loaded. All books are organized by exam category so students see only what's relevant to them.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What if my child doesn't find it useful?</div>
+        <div class="faq-a">The 7-day free trial requires no credit card. Your child can use the full app for a week completely free. If it doesn't work for them, you simply don't subscribe. There's no charge, no cancellation needed.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Is ₹2,999 a one-time payment or recurring?</div>
+        <div class="faq-a">It's an annual subscription — ₹2,999 per year, which works out to roughly ₹250 per month or about ₹8 per day. You can cancel before renewal and you won't be charged again. We do not offer refunds for the current billing period.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Is my child's data safe?</div>
+        <div class="faq-a">Sharp collects only the minimum necessary data — name, phone number, email, and reading progress. We do not sell data to third parties, we do not serve ads, and we do not share information with anyone. Full details are in our Privacy Policy.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="container">
+    <h2>Still have questions?<br><em>We're here.</em></h2>
+    <p class="contact-sub">Write to us and we'll get back within 24 hours.</p>
+    <a href="mailto:hello@getsharpapp.com" class="contact-email">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      hello@getsharpapp.com
+    </a>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <a href="#" class="footer-logo">Sharp.</a>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-social">
+      <a href="#" class="social-link" title="Instagram">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="#" class="social-link" title="Twitter / X">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+    </div>
+    <div class="footer-copy">© 2026 Sharp. All rights reserved. · getsharpapp.com</div>
+  </div>
+</footer>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // Smooth active nav link highlight on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--ink)' : '';
+    });
+  });
+</script>
+</body>
+</html>
